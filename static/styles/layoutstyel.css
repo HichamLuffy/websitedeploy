@@ -1,0 +1,758 @@
+/* Import the Poppins font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+/* Resetting default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container for content */
+ 
+.container {
+    width: 100%; /* Adjusted to ensure responsiveness */
+    min-height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(26, 114, 239, 0.819) 0%, rgba(0,0,0,1) 71%);
+    background-size: cover;
+    z-index: -26;
+    background-position: center;
+}
+
+.gradient-controls-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 50;
+    background: rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 8px 32px 0 rgba(27, 27, 27, 0.37);
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.gradient-controls-container.show {
+    display: flex;
+    z-index: 50;
+}
+
+.gradient-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    z-index: 55;
+}
+
+.gradient-controls input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 200px;
+    height: 10px;
+    z-index: 55;
+    background: #d3d3d3;
+    border-radius: 5px;
+    margin: 0 10px;
+    outline: none;
+}
+
+.gradient-controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    z-index: 55;
+    background: #43488f;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gradient-controls input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    z-index: 55;
+    background: #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gradient-controls input[type="range"]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    z-index: 55;
+    background: #4caf50;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+#colorPicker {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    z-index: 55;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+    z-index: 55;
+}
+
+#colorPicker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    z-index: 55;
+    padding: 0;
+}
+
+
+
+/* Header styles */
+.head {
+    z-index: 555;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5px 0px;
+}
+
+.logopage{
+    width: 132px;
+    cursor: pointer;
+    margin-right: -50px;
+}
+
+.user-button img {
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+    border-radius: 50%;
+    object-fit: cover; /* Resize the image to cover the container */
+    margin-bottom: 10px;
+}
+
+.head img {
+    z-index: 3;
+}
+
+.head ul {
+    z-index: 3;
+    list-style: none;
+    width: 100%;
+    padding: 0.5px 0px;
+    text-align: center; /* Center the list items */
+}
+
+.head ul li {
+    display: inline-block; /* Change to inline-block to allow margin and padding adjustments */
+    margin: 10px 20px; /* Adjust margins between list items */
+    color: #fff;
+    cursor: default;
+}
+
+.head ul li a {
+    color: #d3d3d3b9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.74);
+    text-decoration: none;
+    font-family: 'ClashDisplay', sans-serif;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for smoother color change, scaling, background color change, and shadow */
+    padding: 5px 10px; /* Add padding for spacing */
+    display: inline-block; /* Ensure inline-block display for smooth scaling */
+}
+
+.head ul li a:hover {
+    color: #ffffff;
+    transform: scale(1.1); /* Scale up to 1.1 times on hover */
+}
+
+
+
+
+.social-media {
+    margin-left: 20px; /* Add space between the vertical line and social media */
+}
+
+hr {
+    margin: 20px 0; /* Add space above and below the horizontal line */
+}
+
+.social-media {
+    text-align: left;
+    margin-bottom: 20px; /* Space between newsletter and social media links */
+}
+
+.email-input {
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 10px; /* Space between input and button */
+    border: 1px solid #fff; /* White border for the input */
+}
+
+.subscribe-btn {
+    padding: 5px 10px;
+    background-color: #333; /* Darker background for the button */
+    color: #fff; /* Ensure text is fully opaque white */
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+.social-media p,
+.social-link {
+    display: block; /* Links in a row, inline-block for margins to work */
+    margin-right: 10px;
+    color: #fff; /* Ensure text is fully opaque white */
+}
+
+
+.theme-btn {
+    padding: 5px 10px;
+    background-color: #333; /* Darker background for the button */
+    color: #fff; /* Ensure text is fully opaque white */
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.btn {
+    display: flex;
+    align-items: center;
+    padding: 3px 20px;
+    border: 0;
+    outline: 0;
+    margin-right: 40px;
+    border-radius: 70px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    background: #bbbbbb00;
+    box-shadow: 0 0px 0px 0 rgba(27, 27, 27, 0.37);
+    background-image: linear-gradient(45deg, transparent 50%, #000000 50%);
+    background-position: 25%;
+    color: #d3d3d3;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 100px;
+    background-size: 400%;
+    -webkit-transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    z-index: 55;
+}
+
+.btn:first-child {
+    margin-right: 10px; /* Adjust the space between the first button and the second button */
+}
+
+
+.btn:last-child {
+    margin-left: 10px; /* Adjust the space between the second button and the first button */
+}
+
+
+
+.btn a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family:  'Helvetica', serif;
+    color: inherit; /* Inherit text color from parent */
+    white-space: nowrap; 
+}
+
+.btn img {
+    object-fit: cover;
+    border-radius: 50%; /* Make the image circular */
+    width: 30px; /* Adjust the width of the image as needed */
+    height: 30px; /* Adjust the height of the image as needed */
+    margin-right: 15px; /* Add spacing between the image and the button text */
+}
+
+.btn:hover {
+    color: #ffffff;
+    background-position: 100%;
+}
+
+/* Post styles */
+section {
+    padding: 20px 0;
+    z-index: 22;
+}
+
+.logopage {
+    margin-left: 40px; /* Adjust the left margin of the logo image */
+    margin-right: 10px; /* Adjust the right margin of the logo image */
+    z-index: 1;
+}
+
+/* Style the aside text */
+.content{
+    position: relative;
+    margin-top: 8%;
+    /* margin-left: 5%; */
+    color: #fdfdfd;
+    max-width: 100%;
+    cursor: default;
+}
+
+
+.content h1{
+    width: 100%;
+    font-size: clamp(90px, 4vw, 110px);
+    margin-bottom: 2px;
+    line-height: 50px;
+    font-weight: bold;
+    line-height: 85px;
+    font-family: 'Clash Display', sans-serif;
+}
+
+
+.content p{
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    margin-top: 2px;
+    font-family:  'inter', serif;
+}
+.content-text {
+    margin-left: 5%; /* Move the text container to the right */
+}
+
+.background-img {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire screen */
+    mix-blend-mode: overlay;
+}
+
+.blockcntn {
+    position: relative;
+    z-index: 5;
+    /* margin-bottom: 200px; */
+}
+
+.bn3637 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.5rem; /* Adjusted padding */
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 16px; /* Adjusted font size */
+    text-align: center;
+    text-decoration: none;
+    background-image: linear-gradient(45deg, transparent 50%, #000000 50%);
+    background-position: 25%;
+    color: #fff;
+    background-size: 400%;
+    -webkit-transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    backdrop-filter: blur(20px);
+    backface-visibility: hidden;
+    border: 0.02rem solid transparent;
+    border-radius: 0.8rem; /* Adjusted border radius */
+}
+
+.bn37 {
+    border-color: #fff; /* White border color */
+    color: #ffffff;
+    transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+
+.bn37:hover {
+    color: #ffffff;
+    background-position: 100%;
+    transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
+
+.btn2 {
+    display: flex;
+    align-items: center;
+    padding: 3px 15px;
+    border: 0;
+    outline: 0;
+    border-radius: 70px;
+    background: #000000;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 1px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 55;
+}
+
+.rectangle-overlay {
+    position: absolute;
+    top: 1%;
+    left: 0;
+    margin-right: 100%;
+    width: 100%; /* Cover the entire width of the page */
+    height: 100%; /* Cover the entire height of the page */
+    background-color: rgba(0, 0, 0, 0.5); /* Black color with 50% opacity */
+    z-index: -1; /* Ensure it's behind other content */
+    margin: 0; /* Remove any margins */
+    padding: 0; /* Remove any paddings */
+}
+.top-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover the entire width of the page */
+    height: 10%; /* Adjust the height as needed */
+    border-bottom: 1px solid rgb(153, 153, 153);
+    z-index: 1; /* Ensure it's above other content */
+}
+
+body {
+    --sb-track-color: #1b1b1b00;
+    --sb-thumb-color: #1b1b1b;
+    --sb-size: 10px;
+}
+  
+  body::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+  
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 9px;
+    border: 1px solid #a1a1a100;
+}
+  
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 9px;
+}
+  
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+}
+
+.comments-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    overflow-x: hidden; /* Hide the default scrollbar */
+    white-space: nowrap;
+    position: relative; /* Required for smooth scrolling */
+}
+
+.comments-container {
+    scroll-snap-type: x mandatory; /* Enable snapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+    white-space: nowrap;
+    display: flex; /* Ensure the comments are laid out horizontally */
+    padding: 10px 0; /* Add some vertical padding for breathing room */
+}
+
+.comment-box {
+    font-family:  'Helvetica', serif;
+    display: inline-flex; /* Change to inline-flex to allow internal flex layouts */
+    flex-direction: column; /* Stack elements vertically inside each comment box */
+    margin-right: 10px;
+    color: white;
+    padding: 10px;
+    border-radius: 40px;
+    scroll-snap-align: start; /* Snap to start of each comment */
+    background-color: #322e36; /* Optional: adds background color */
+    width: 250px; /* Set a fixed width for each comment box */
+}
+
+.rating, .comment-text, .user-info {
+    margin-bottom: 10px; /* Adds some space between the elements inside the comment box */
+}
+
+.comment-text {
+    text-align: justify;
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Breaks long unbreakable words */
+    overflow-wrap: break-word; /* Preferable for newer browsers */
+    overflow: hidden; /* Ensures content doesn't spill out */
+}
+
+
+
+.user-info {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    gap: 10px; /* Adds some space between the profile pic and username */
+}
+
+.profile-pic {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 50%; /* Makes the image round */
+}
+
+.comment-box:last-child {
+    margin-right: 0;
+}
+.comments-section {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif; /* Example font */
+}
+
+.comments-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.comments-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.comment-box {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    width: 300px; /* Adjust based on your preference */
+    margin: 0 10px;
+    padding: 15px;
+
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.comment-text {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.rating, .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 5px;
+}
+
+.profile-pic {
+    width: 50px; /* Adjust based on your preference */
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.star {
+    color: #ffffff; /* Gold color for stars */
+    margin-right: 2px;
+}
+
+.comment-form {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.comment-form.show  {
+    display: flex;
+    opacity: 1;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#comment-text, #comment-rating {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.comment-form button {
+    width: 80%;
+    padding: 10px;
+    background-color: #9999992f; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.arrow {
+    background-color: #322e36; /* Changed for a cleaner look */
+    color: white; /* Text color */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background-color: #ddd; /* Light grey on hover */
+}
+
+.dot {
+    width: 12px; /* Slightly larger for better visibility */
+}
+
+
+.social-mediaa {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.social-icon {
+    width: 20px; /* Adjust the size of the icons */
+    height: 20px; /* Adjust the size of the icons */
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+    .comments-section {
+        width: 95%;
+    }
+
+    .comment-box {
+        width: 260px; /* Smaller boxes on smaller screens */
+    }
+}
+
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+    .head ul {
+        padding: 0;
+    }
+
+    .head ul li {
+        margin: 5px; /* Reduce margin for smaller screens */
+        font-size: smaller; /* Adjust font size as needed */
+    }
+
+    .head ul li a {
+        padding: 5px; /* Adjust padding as needed */
+    }
+
+    .content h1 {
+        font-size: clamp(36px, 6vw, 48px); /* Responsive font size */
+    }
+
+    .content p,
+    .newsletter p,
+    .privacy-policy {
+        font-size: smaller; /* Adjust font size for smaller screens */
+    }
+
+    .email-input,
+    .subscribe-btn {
+        width: 90%; /* Adjust input and button width */
+        margin-top: 10px; /* Add space above */
+    }
+}
+
+/* Responsive styles for mobile phones */
+@media (max-width: 480px) {
+    .head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logopage {
+        margin-left: 20px; /* Adjust logo margin */
+        width: 100px; /* Adjust logo size */
+    }
+
+    .head ul {
+        text-align: left;
+        width: auto;
+    }
+
+    .head ul li {
+        display: block; /* Stack list items vertically */
+        margin: 5px 0; /* Adjust margin for list items */
+    }
+
+    .head ul li a {
+        display: block; /* Ensure the links take up full width of the li */
+    }
+
+    
+
+    .content,
+    .content2,
+    .main-section {
+        padding: 10px; /* Adjust padding for content areas */
+    }
+
+    .content-text,
+    .text-container,
+    .image-container {
+        width: auto; /* Allow these containers to take the full width of their parent */
+        padding: 0 20px; /* Add padding on the sides */
+    }
+
+    .background-img {
+        display: none; /* Optionally hide the background image on very small screens */
+    }
+
+    /* Adjust the swiper for smaller screens */
+    .swiper-slide {
+        width: 90%; /* Adjust slide width to fit the screen */
+        flex-shrink: 0; /* Prevent shrinking */
+    }
+
+    /* Adjust comment section for smaller screens */
+    .comments-section,
+    .comments-container {
+        width: auto; /* Allow these containers to take the full width of their parent */
+        padding: 0 20px; /* Add padding on the sides */
+    }
+}
+
+/* General styles to improve readability and touch targets on small screens */
+
+input[type="email"],
+.bn3637,
+.bn37 {
+    padding: 10px; /* Increase padding for better touch targets */
+}
+
+/* Ensure text is legible and easy to read on all devices */
+body,
+p,
+a,
+button {
+    font-size: 16px; /* Base font size for readability */
+}

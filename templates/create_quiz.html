@@ -1,0 +1,92 @@
+{% extends "index.html" %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data" class="createform">
+    {{ form.hidden_tag() }}
+    <!-- create quiz form -->
+    <div class="form-section" placeholder="Search quizzes...">
+        {{ form.title.label }} {{ form.title() }}
+        {{ form.category.label }} {{ form.category(id='category') }}
+        {{ form.level.label }} {{ form.level() }}
+        {{ form.quizpic.label }} {{ form.quizpic() }}
+        {{ form.num_questions.label }} {{ form.num_questions() }}
+    </div>
+    <div id="questions-container"></div> <!-- Placeholder for dynamic questions -->
+    <input type="submit" name="submit_button" value="Create Quiz">
+</form>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const numQuestionsInput = document.getElementById('num_questions');
+    const categorySelect = document.getElementById('category');
+    const questionsContainer = document.getElementById('questions-container');
+
+    numQuestionsInput.addEventListener('change', function() {
+        const numQuestions = parseInt(this.value, 10);
+        questionsContainer.innerHTML = ''; // Clear existing questions
+
+        for (let i = 0; i < numQuestions; i++) {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question-group';
+            let questionTypeHTML = '';
+            console.log("Selected category:", categorySelect.value); // Debugging
+            if (categorySelect.value === 'Images') {
+                questionTypeHTML = `
+                    <label for="question${i + 1}_image">Upload Image:</label>
+                    <input type="file" id="question${i + 1}_image" name="question${i + 1}_image" accept="image/png, image/jpeg">
+                `;
+            } else if (categorySelect.value === 'Sound') {
+                questionTypeHTML = `
+                    <label for="question${i + 1}_sound">Upload Sound:</label>
+                    <input type="file" id="question${i + 1}_sound" name="question${i + 1}_sound" accept="audio/mpeg">
+                `;
+            }
+            console.log("Question type HTML:", questionTypeHTML); // Debugging
+            questionDiv.innerHTML = `
+            <div class="question-label">Question ${i + 1}</div>
+                <input type="text" class="question-input" name="question${i + 1}" required>
+                ${questionTypeHTML}
+                <div class="options-container">
+                    <input type="text" class="option-input" name="option${i + 1}_1" placeholder="Option 1" required>
+                    <input type="text" class="option-input" name="option${i + 1}_2" placeholder="Option 2" required>
+                    <input type="text" class="option-input" name="option${i + 1}_3" placeholder="Option 3" required>
+                    <input type="text" class="option-input" name="option${i + 1}_4" placeholder="Option 4" required>
+                </div>
+                <select name="correct_option${i + 1}" class="correct-option-select">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                </select>
+            `;
+            questionsContainer.appendChild(questionDiv);
+        }
+    });
+    console.log("Attempting to submit form");
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent form submission initially
+        console.log("Form submit event triggered");
+
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        for (let input of textInputs) {
+            console.log(`Checking input: ${input.value}`);
+            const isProfane = await checkProfanity(input.value);
+            if (isProfane) {
+                console.log("Profanity detected");
+                alert("Please remove inappropriate language from your questions and options.");
+                return; // Stop checking further and do not submit the form
+            }
+        }
+
+        // If all inputs are clean, proceed with form submission
+        console.log("No profanity detected, submitting form");
+        form.submit();
+    });
+});
+
+async function checkProfanity(text) {
+    const response = await fetch(`https://www.purgomalum.com/service/containsprofanity?text=${encodeURIComponent(text)}`);
+    const isProfane = await response.text(); // The response is a plain text "true" or "false"
+    return isProfane === 'true';
+}
+</script>
+{% endblock %}

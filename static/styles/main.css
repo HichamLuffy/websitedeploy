@@ -1,0 +1,743 @@
+.content2 {
+    display: flex; /* Use flexbox to arrange items */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 200px;
+    color: #fdfdfd;
+    max-width: 100%;
+    cursor: default;
+}
+
+.content2 h5{
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 0.1px;
+    margin-left: 10%;
+    font-weight: bold;
+    font-family: 'Clash Display', sans-serif;
+}
+
+.content2 p{
+    margin-left: 10%;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    margin-top: 1px;
+    font-family:  'inter', serif;
+}
+
+.content2 a{
+    margin-top: 10px;
+    margin-left: 10%;
+}
+
+
+.image-container {
+    position: relative;
+    flex: 0 0 auto; /* Don't grow or shrink */
+}
+
+.text-container {
+    flex: 1; /* Take up remaining space */
+    margin-left: 20px; /* Adjust spacing between image and text */
+}
+
+.image-container img {
+    display: block;
+    margin-right: 150px;
+    margin-left: 30px;
+    max-width: 400px; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 30px;
+    width: 400px;
+    height: 100%;
+    background: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(26, 115, 239, 0.74) 0%, rgba(0,0,0,1) 100%);
+    pointer-events: none; /* Ensure the overlay doesn't interfere with mouse events */
+    mix-blend-mode: hue;  /*Blend the gradient with the image */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-section {
+  position: relative;
+  display: flex;
+  margin-left: 63px;
+  margin-top: 200px;
+  justify-content: space-between;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+  margin-left: 190px;
+  border-radius: 20px;
+  width: min(900px, 100%);
+  z-index: 10;
+}
+
+.information {
+  display:flex;
+  color: #fdfdfd;
+  font-weight: bold;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: -60px;
+  max-width: 700px;
+  padding: 50px 0px;
+  text-align: justify;
+}
+
+.information h5{
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 0.1px;
+    font-weight: bold;
+    font-family: 'Clash Display', sans-serif;
+  }
+
+.information p{
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'inter', sans-serif;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.movie-night {
+  background: linear-gradient(225deg, #68686860 0%, #58585844 50%, #07080891 100%);
+}
+
+.btnaa {
+  display: block;
+  padding: 10px 40px;
+  margin: 10px auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+  color: #784ba0;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.btnaa:hover, .btnaa:focus, .btnaa:active, .btnaa:visited {
+    transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+    animation: gelatine 0.5s 1;
+}
+
+@keyframes gelatine {
+  
+  0%, 100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+/* SWIPER */
+
+.swiper {
+    margin-top: 80px;
+    width: 250px;
+    height: 350px;
+    padding: 50px 0;
+    
+}
+
+.swiper-slide {
+  position: relative;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  font-family: 'Poppins', cursive;
+}
+
+.swiper-slide span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  padding: 7px 18px;
+  margin: 10px;
+  border-radius: 20px;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.095);
+  box-shadow: inset 2px -2px 20px rgba(214, 214, 214, 0.2), inset -3px 3px 3px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(74px);
+}
+
+.swiper-slide h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin: 0 0 20px 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.963);
+}
+
+.swiper-slide:nth-child(1n) {
+    box-shadow: inset 0 -10px 60px -10px rgba(15, 15, 15, 0.781); 
+    background: url("../images/animeeye.png")
+        no-repeat 50% 50% / cover;
+}
+
+.swiper-slide:nth-child(2n) {
+    box-shadow: inset 0 -10px 60px -10px rgba(15, 15, 15, 0.781); 
+    background: url("../images/animeface.png")
+        no-repeat 50% 50% / cover;
+}
+
+.swiper-slide:nth-child(3n) {
+    box-shadow: inset 0 -10px 60px -10px rgba(15, 15, 15, 0.781); 
+    background: url("../images/anime2.jpeg")
+        no-repeat 50% 50% / cover;
+    
+}
+
+.swiper-slide:nth-child(4n) {
+    box-shadow: inset 0 -10px 60px -10px rgba(15, 15, 15, 0.781); 
+    background: url("../images/goated.jpg")
+        no-repeat 50% 50% / cover;
+    
+}
+
+
+@keyframes animate {
+
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100%{
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+
+
+.updates-section {
+  background: url('../images/updatesbackground.jpeg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  padding: 50px; /* Adjust padding as needed */
+}
+
+.updates-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay with 70% opacity */
+  z-index: 1;
+}
+
+
+.updates-content {
+  position: relative;
+  max-width: 600px; /* Adjust width as needed */
+  text-align: left;
+  z-index: 2; /* Ensure the text appears above the dark overlay */
+}
+
+.updates-title {
+  font-family:  'Helvetica', serif;
+  font-weight: bold;
+  font-size: 24px; /* Adjust font size as needed */
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Black shadow for text */
+}
+
+.updates-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.updates-list li {
+  font-size: 18px; /* Adjust font size as needed */
+  margin-bottom: 10px;
+}
+
+.team-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.team-section h6 {
+  font-family: 'Clash Display', sans-serif;
+  color: white;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.team-section h2 {
+  font-family: 'Clash Display', sans-serif;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.team-section p {
+  color: white;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 1em;
+  margin-bottom: 40px;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 120px; /* Adjust the gap as needed */
+}
+
+.team-member {
+  background-color: #71677c; /* Adjust card background color as needed */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for the card */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Card shadow */
+  width: 360px; /* Adjust width as needed */
+}
+
+.team-member img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
+.team-member h3 {
+  color: white;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+
+.team-member p {
+  font-size: 1em;
+  font-family: 'Helvetica', sans-serif;
+  color: #919191;
+  margin-bottom: 15px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust the gap between icons as needed */
+}
+
+.social-links a {
+  display: inline-block;
+}
+
+.social-links img {
+  width: 24px; /* Adjust icon size as needed */
+  height: auto;
+}
+
+.btn55 {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding: 3px 20px;
+  border: 0;
+  outline: 0;
+  border-radius: 70px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  background: #bbbbbb00;
+  box-shadow: 0 0px 0px 0 rgba(27, 27, 27, 0.37);
+  background-image: linear-gradient(45deg, transparent 50%, #322e36 50%);
+  background-position: 25%;
+  color: #d3d3d3;
+  font-weight: 500;
+  cursor: pointer;
+  background-size: 400%;
+  -webkit-transition: background 500ms ease-in-out, color 500ms ease-in-out;
+  transition: background 500ms ease-in-out, color 500ms ease-in-out;
+  backdrop-filter: blur( 10px );
+  -webkit-backdrop-filter: blur( 10px );
+  z-index: 55;
+}
+
+
+.btn55 a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family:  'Helvetica', serif;
+  color: inherit; /* Inherit text color from parent */
+  white-space: nowrap; 
+}
+
+.btn55:hover {
+  color: #ffffff;
+  background-position: 100%;
+}
+
+.btn55-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px; /* Adjust margin as needed */
+}
+.video-signup-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  background-color: #000;
+  color: #fff;
+  position: relative; /* Add position property */
+}
+
+.video-container {
+  width: 40%;
+  background-color: #cfcfcf; /* Placeholder for the video's background */
+  position: relative; /* Ensure the video container has a stacking context */
+  z-index: 1; /* Set a higher z-index value */
+}
+
+.video-container iframe {
+  width: 100%;
+  height: auto;
+  position: relative; /* Ensure the iframe has a stacking context */
+  z-index: 1; /* Set a higher z-index value */
+}
+
+.video-text {
+  max-width: 50%;
+  position: relative; /* Ensure the text container has a stacking context */
+  z-index: 2; /* Set a higher z-index value */
+}
+
+.signup-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative; /* Ensure the button has a stacking context */
+  z-index: 2; /* Set a higher z-index value */
+}
+
+.signup-button:hover {
+  background-color: #cacaca;
+  color: #383838;
+  transition: all 0.3s ease;
+}
+
+
+.socialmedia{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-family: sans-serif;
+} 
+
+.scrollefeectteam1 {
+  z-index: 54584;
+}
+
+.socialmediacontainer{
+    width: 1000px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    z-index: 55;
+    flex-wrap: wrap;
+}
+
+
+.socialmediacontainer .socialmediacard {
+  z-index: 55;
+  position: relative;
+  border-radius: 10px;
+}
+
+.socialmediacontainer .socialmediacard .socialmediaicon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f00;
+  transition: 0.7s;
+  z-index: 1;
+}
+
+.socialmediacontainer .socialmediacard:nth-child(1) .socialmediaicon {
+  background: #7e433a;
+}
+
+.socialmediacontainer .socialmediacard:nth-child(2) .socialmediaicon {
+  background: #40667e;
+}
+
+.socialmediacontainer .socialmediacard:nth-child(3) .socialmediaicon {
+  background: #3b3b3b;
+}
+
+
+.socialmediacontainer .socialmediacard .socialmediaicon .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  transition: 0.7s;
+  color: #fff;
+}
+
+i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 80px;
+  transition: 0.7s;
+  color: #fff;
+}
+
+.socialmediacontainer .socialmediacard .face {
+  width: 300px;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.socialmediacontainer .socialmediacard .face.face1 {
+  position: relative;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px);
+}
+
+.socialmediacontainer .socialmediacard:hover .face.face1{
+  background: #ff0057;
+  transform: translateY(0px);
+}
+
+.socialmediacontainer .socialmediacard .face.face1 .socialmediacontent {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.socialmediacontainer .socialmediacard:hover .face.face1 .socialmediacontent {
+  opacity: 1;
+}
+
+.socialmediacontainer .socialmediacard .face.face1 .socialmediacontent i{
+  max-width: 100px;
+}
+
+.socialmediacontainer .socialmediacard .face.face2 {
+  position: relative;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  transform: translateY(-100px);
+}
+
+.socialmediacontainer .socialmediacard:hover .face.face2{
+  transform: translateY(0);
+}
+
+.socialmediacontainer .socialmediacard .face.face2 .socialmediacontent p {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #414141;
+}
+
+.socialmediacontainer .socialmediacard .face.face2 .socialmediacontent h3 {
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  color: #414141;
+} 
+
+.socialmediacontainer a {
+  text-decoration: none;
+  color: #414141;
+}
+
+
+
+/* Responsive styles for tablets */
+@media (max-width: 768px) {
+  .content2 {
+    flex-direction: column-reverse; /* Stack image and text vertically on smaller screens */
+    align-items: center; /* Center-align items */
+    text-align: center; /* Center-align text */
+  }
+
+  .content2 .text-container,
+  .content2 .image-container {
+    width: 100%; /* Full width containers */
+    margin: 0 auto; /* Center-align */
+  }
+
+  .image-container img {
+    margin: 0 auto; /* Center image */
+    width: auto; /* Adjust width to maintain aspect ratio */
+    max-width: 90%; /* Limit width to fit the screen */
+  }
+
+  .gradient-overlay {
+    width: 90%; /* Match the image width */
+    margin-left: 5%; /* Adjust based on new width */
+  }
+
+  .main-section {
+    flex-direction: column; /* Stack vertically */
+    margin-left: 0; /* Remove left margin */
+  }
+
+  .cards {
+    flex-direction: column; /* Stack cards vertically */
+    margin-left: 0; /* Remove left margin */
+    width: auto; /* Allow cards to fill the available space */
+  }
+
+  .information {
+    margin-left: 0; /* Remove left margin */
+    padding: 20px; /* Adjust padding for smaller screens */
+    text-align: center; /* Center text for mobile */
+  }
+
+  .swiper {
+    width: auto; /* Allow swiper to adjust to screen size */
+    height: auto; /* Adjust height accordingly */
+  }
+
+  .team-members {
+    flex-direction: column; /* Stack team members vertically */
+    gap: 20px; /* Reduce gap for smaller screens */
+  }
+
+  .team-member {
+    width: auto; /* Allow team member cards to adjust to screen size */
+  }
+}
+
+
+
+/* Responsive styles for mobile phones */
+@media (max-width: 480px) {
+  .content2 h5,
+  .content2 p {
+    margin-left: 5%; /* Adjust left margin for smaller screens */
+    margin-right: 5%; /* Add right margin for padding effect */
+    font-size: smaller; /* Adjust font size for mobile phones */
+  }
+
+  .updates-section::before {
+    background: rgba(0, 0, 0, 0.85); /* Increase opacity for better readability on smaller screens */
+  }
+
+  .updates-content {
+    max-width: auto; /* Allow content to fill the available space */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .team-section p,
+  .team-member p,
+  .updates-list li {
+    font-size: smaller; /* Adjust font size for readability on mobile phones */
+  }
+}
+
+.faq-section {
+  color: white;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.faq-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle {
+  text-align: center;
+  margin-bottom: 30px;
+  opacity: 0.7;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq-item {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.faq-item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  font-size: 16px;
+  line-height: 1.6;
+}

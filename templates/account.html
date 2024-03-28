@@ -1,0 +1,184 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="userprofile">
+    <div class="profile-page">
+        <h2>Welcome to your profile, {{ current_user.username }}</h2>
+        <div class="profile-actions">
+            <ul>
+                <li>
+                    <a href="#" id="edit-profile-link"><img src="../static/images/settingsicon.png"></a>
+                </li>
+                <div id="edit-profile-div" style="display: none;">
+                    <form id="register-form" method="POST" action="" enctype="multipart/form-data">
+                        <fieldset>
+                            {{ form.hidden_tag() }}
+                            {{ form.new_avatar.label() }}
+                            {{ form.new_avatar(class="form-control") }}
+                            <legend><h3>Update your account</h3></legend>
+                            <a id="username-edit">edit your username</a>
+                            {{ form.username(id="username-edit", class="form-control", placeholder="new username") }}
+                            {% if form.username.errors %}
+                            <div class="errors">
+                                {% for error in form.username.errors %}
+                                <span class="errormessag">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            </br>
+                            <a id="email-edit">edit your email</a>
+                            {{ form.email(id="email-edit", class="form-control", placeholder="New Email") }}
+                            {% if form.email.errors %}
+                            <div class="errors">
+                                {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            </br>
+                            <a id="username-edit">edit your bio</a>
+                            {{ form.bio (class="form-control", placeholder="tell us about your self") }}
+                            <div>
+                                {{ form.pfp.label() }}
+                                {{ form.pfp(class="form-control-file") }}
+                                {% if form.pfp.errors %}
+                                    {% for error in form.pfp.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="btnupdate">
+                                {{ form.submit (class="btnlogout") }}
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </ul>
+        </div>
+        <div class="profile-details" id="profile-details">
+            <div class="profile-bio">
+                <img src="{{ image_file }}" alt="Profile Picture">
+                <h4>{{ current_user.profile.bio }}</h4>
+                <button class="btnlogout"><a href="{{ url_for('logout_page') }}">lOGOUT</a></button>
+            </div>
+            <nav class="user-detail">
+                <ul>
+                    <li>Player name: <p>{{ current_user.username }}</p></li>
+                    <li>Started on: <p>{{ current_user.created_at.strftime('%m/%d/%Y') }}</p></li>
+                    <li>Followers: <span class="clickable" data-user-id="{{ current_user.id }}" onclick="openModal('followersModal', this)"><p>{{ followers_count }}</p></span></li>
+                    <li>Following: <span class="clickable" data-user-id="{{ current_user.id }}" onclick="openModal('followingModal', this)"><p>{{ following_count }}</p></span></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Followers Modal -->
+        <div id="followersModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Followers</h2>
+                <div class="modal-body"><!-- Followers list will be loaded here --></div>
+            </div>
+        </div>
+
+        <!-- Following Modal -->
+        <div id="followingModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Following</h2>
+                <div class="modal-body"><!-- Following list goes here --></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="profile-score">
+        <h4>Stats</h4>
+        <nav>
+            <ul>
+                <li>Score: <p>{{ total_score }}</p></li>
+                <li>Time Played: <p>{{ total_attempts}}</p></li>
+                <li>Average score: <p>{{ average_score }}</p></li>
+                <li>Last Quiz Played: <p>{{ most_recent_quiz }}</p></li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <div class="quizeslist">Your Quizzes</div>
+    <div class="user-quizzes">
+        {% for quiz, image_path in quizzes_with_images %}
+            <div class="quiz-container">
+                <div class="userboxed-link" style="background-image: url('{{ image_path }}');">
+                    <a href="{{ url_for('quiz_questions', quiz_id=quiz.id) }}">{{ quiz.title }}</a>
+                </div>
+                <form action="{{ url_for('delete_quiz', quiz_id=quiz.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this quiz?');">
+                    <input type="submit" value="Delete" class="delete-quiz-btn" />
+                </form>
+            </div>
+        {% else %}
+            <p>You haven't created any quizzes yet.</p>
+        {% endfor %}
+    </div>
+</div>
+<script>
+function openModal(modalId, element) {
+    var userId = element.getAttribute('data-user-id');
+    var modal = document.getElementById(modalId);
+    modal.style.display = "block";
+
+    // Determine whether to fetch followers or following
+    var url;
+    if (modalId === 'followersModal') {
+        url = `/user/followers/${userId}`;
+    } else if (modalId === 'followingModal') {
+        url = `/user/following/${userId}`;
+    } else {
+        console.error('Invalid modal ID');
+        return;
+    }
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            let listContainer = modal.querySelector('.modal-body');
+            listContainer.innerHTML = ''; // Clear previous content
+            if (data.length > 0) {
+                data.forEach(user => {
+                    let userElement = document.createElement('p');
+                    userElement.textContent = user.username;
+                    listContainer.appendChild(userElement);
+                });
+            } else {
+                listContainer.textContent = 'No users found.';
+            }
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+// Close modal when user clicks on <span> (x)
+var closeButtons = document.getElementsByClassName("close-button");
+for (var i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].onclick = function() {
+        this.parentElement.parentElement.style.display = "none";
+    }
+}
+
+// Close the modal if the user clicks outside of it
+window.onclick = function(event) {
+    if (event.target.className === "modal") {
+        event.target.style.display = "none";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('form input[type="submit"]');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const quizTitle = this.closest('.userboxed-link').querySelector('a').textContent;
+            const confirmDelete = confirm(`Are you sure you want to delete "${quizTitle}"?`);
+            if (!confirmDelete) {
+                event.preventDefault(); // Prevent form submission if user cancels
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

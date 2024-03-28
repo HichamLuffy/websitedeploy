@@ -1,0 +1,148 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="question-container">
+    <h1>{{ quiz.title }}</h1>
+    <h5>by {{ quiz.user.username }}</h5>
+    <p>Number of questions: {{ num_questions }}</p>
+    <p>Category: {{ quiz.category }}</p>
+    <p>Level: {{ quiz.level }}</p>
+    <hr>
+    <form method="POST" action="{{ url_for('quiz_questions', quiz_id=quiz.id) }}">
+        <div>Timer: <span id="timer">0</span> seconds</div>
+        <progress id="time-progress" value="20" max="20"></progress>
+        {% for question in questions %}
+        <div class="question {% if loop.first %}active{% endif %}">
+            <div class="question-box">
+                <h3>{{ question.question_text }}</h3>
+                {% if quiz.category == 'image' and question.image_path %}
+                <div class="image-box">
+                    <img src="{{ question.image_path }}" alt="Question Image">
+                </div>
+                {% endif %}
+                {% if quiz.category == 'sound' and question.sound_path %}
+                <audio controls>
+                    <source src="{{ question.sound_path }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                {% endif %}
+            </div>
+            <div class="options-box">
+                <ul>
+                    {% for option in question.options %}
+                    <li>
+                        <label class="option-label">
+                            <input type="radio" name="question{{ question.id }}" value="{{ option.id }}" class="radio-input">
+                            <span class="option-text">{{ option.text }}</span>
+                        </label>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="qstbtn">
+            <a class="prev">Previous</a>
+            <a class="next">Next</a>
+            <button type="submit" id="submitBtn" style="display: none;">Submit Answers</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    var currentQuestion = 0;
+    var questions = $('.question');
+    
+    function showQuestion(index) {
+        questions.each(function(i, question) {
+            if (i === index) {
+                $(question).addClass('active');
+            } else {
+                $(question).removeClass('active');
+            }
+        });
+        $('.prev').toggle(currentQuestion !== 0);
+        $('.next').toggle(currentQuestion < questions.length - 1);
+        $('#submitBtn').toggle(currentQuestion === questions.length - 1 || questions.length === 1);
+        // Disable Next button by default when showing a new question
+        $('.next').prop('disabled', !isOptionSelected());
+    }
+
+    function isOptionSelected() {
+        // Check if any radio button in the current question is checked
+        return $('.question.active .radio-input:checked').length > 0;
+    }
+
+    $('.next').click(function() {
+        if (currentQuestion < questions.length - 1 && isOptionSelected()) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        }
+    });
+
+    $('.prev').click(function() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            showQuestion(currentQuestion);
+        }
+    });
+
+    $(document).on('change', '.radio-input', function() {
+        $('.next').prop('disabled', false);
+        // Optionally, you can also enable the Submit button here if you're on the last question
+        if (currentQuestion === questions.length - 1) {
+            $('#submitBtn').prop('disabled', !isOptionSelected());
+        }
+    });
+    showQuestion(currentQuestion);
+    // jQuery for handling radio button clicks and visual feedback
+    $('.option-label').click(function() {
+        // First, remove 'checked' class from all options in the current question
+        $(this).closest('.question').find('.option-label').removeClass('checked');
+
+        // Then, add 'checked' class only to the clicked option
+        $(this).addClass('checked');
+    });
+
+    // Modify form submission to check for selection on the last question
+    $('form').submit(function(e) {
+        if (!isOptionSelected()) {
+            e.preventDefault(); // Prevent form submission
+            alert('Please select an option before submitting.');
+        }
+    });
+});
+
+let startTime;
+let userScore = 0; // Initialize user score
+
+function startTimer() {
+    startTime = new Date();
+    // Update UI every second for the timer
+    setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+    const now = new Date();
+    const elapsedTime = (now - startTime) / 1000; // Convert to seconds
+    document.getElementById('timer').textContent = elapsedTime.toFixed(0);
+    // Adjust progress bar based on elapsed time
+    const progressBar = document.getElementById('time-progress');
+    progressBar.value = elapsedTime > 20 ? 0 : 20 - elapsedTime;
+}
+
+function submitAnswer(questionId) {
+    const endTime = new Date();
+    const responseTime = (endTime - startTime) / 1000; // Calculate response time in seconds
+    // Here you would call a function to handle the answer submission and calculate points
+    calculatePoints(questionId, responseTime);
+}
+
+function calculatePoints(questionId, responseTime) {
+    // This function would interact with your backend to calculate points based on response time
+    // For demonstration, it's shown here but you'll likely handle this server-side
+}
+
+window.onload = startTimer;
+</script>
+{% endblock %}

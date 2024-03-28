@@ -1,0 +1,522 @@
+
+
+.profilecontainer {
+    width: 100%; /* Adjusted to ensure responsiveness */
+    max-height: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(26, 114, 239, 0.819) 0%, rgba(0,0,0,1) 71%);
+    background-size: cover;
+    z-index: -26;
+    overflow-y: auto;
+    background-position: center;
+}
+
+.userprofile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile-page {
+    margin: 90px auto;
+    font-family:  'inter', serif;
+    padding: 10px;
+    margin-left: 20px;
+    background: rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 8px 32px 0 rgba(27, 27, 27, 0.37);
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.profile-page h2 {
+    color: #333;
+}
+
+.profile-details {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 20px;
+}
+
+.profile-details img {
+    width: 150px; /* Adjust width as needed */
+    height: auto 0; /* Adjust height as needed */
+    border-radius: 50%;
+    margin-left: 40px;
+    object-fit: cover; /* Resize the image to cover the container */
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Circular border with a blur effect */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Blur effect */
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
+
+
+/* Style for the settings image */
+
+.profile-actions {
+    margin-left: 6px; /* Adjust margin as needed */
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+
+.profile-actions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-actions li {
+    margin-bottom: 10px;
+}
+
+.profile-actions li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #6d6d6d;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.profile-actions li a:hover {
+    color: #0056b3; /* Change color on hover */
+}
+
+.profile-actions li a img {
+    width: 20px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    margin-left: 650px; /* Adjust margin-left as needed */
+}
+
+.profile-actions li#edit-profile-link a {
+    color: #007bff; /* Change color for edit profile link */
+}
+
+.profile-actions li#edit-profile-link a:hover {
+    color: #0056b3; /* Change color on hover for edit profile link */
+}
+
+.profile-actions #edit-profile-div {
+    margin-top: 10px; /* Adjust margin-top as needed */
+}
+
+.profile-actions #register-form {
+    font-family: 'Helvetica', serif; /* Use Helvetica font for the form */
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+.profile-actions #register-form fieldset {
+    border: none;
+    padding: 0;
+}
+
+.profile-actions #register-form legend {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.profile-actions #register-form a {
+    color: #c9c9c9; /* Change color for edit links */
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.profile-actions #register-form .errors {
+    color: red; /* Change color for error messages */
+    margin-top: 5px; /* Adjust margin-top for error messages */
+}
+
+.profile-actions #register-form .form-control {
+    width: 100%;
+    margin-bottom: 10px; /* Adjust margin-bottom as needed */
+}
+
+.profile-actions #register-form .form-control-file {
+    margin-top: 10px; /* Adjust margin-top as needed */
+}
+
+.profile-actions #register-form .btn2 {
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #007bff; /* Change background color for buttons */
+    color: #fff; /* Change text color for buttons */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions #register-form .btn2:hover {
+    background-color: #0056b3; /* Change background color on hover for buttons */
+}
+
+/* edit for user detail */
+
+.user-detail {
+    margin-left: 100px;
+    padding: 22px; /* Add padding for spacing */
+    background: rgba(53, 69, 214, 0.719);
+    opacity: 0.5;
+    box-shadow: 0 8px 32px 0 rgba(27, 27, 27, 0.37);
+    border-radius: 10px;
+    border: 1px solid rgba(56, 56, 56, 0.719);
+}
+
+.user-detail ul {
+    list-style: none;
+    padding: 0;
+}
+
+.user-detail ul li {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    color: #1d1d1d; /* Adjust text color as needed */
+    text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 4px rgb(255, 255, 255), 0 0 6px rgb(219, 219, 219), 0 0 8px rgb(221, 221, 221);
+    margin-bottom: 15px; /* Adjust spacing between list items */
+    font-size: 20px;
+}
+
+.user-detail ul li img {
+    width: 20px; /* Adjust width of the bullet */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 5px; /* Adjust spacing between bullet and text */
+}
+
+.user-detail ul li p {
+    display: flex; /* Add flexbox display */
+    justify-content: center; /* Center align the list items */
+    margin: 0; /* Remove default margin */
+    font-size: 20px; /* Adjust font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.963);
+    margin-left: 40px;
+    color: rgb(255, 253, 251);
+    font-weight: bold;
+}
+
+
+.profile-bio h4 {
+    font-family:  'inter', serif;
+    margin: 0; /* Remove default margin */
+    color: #c7c7c7; /* Adjust text color as needed */
+    font-size: 16px; /* Adjust font size */
+    margin-left: 65px;
+}
+
+.profile-bio button {
+    font-family:  'inter', serif;
+    margin: 0; /* Remove default margin */
+    font-size: 10px; /* Adjust font size */
+    margin-left: 75px;
+}
+
+.btnlogout {
+    display: flex;
+    align-items: center;
+    padding: 3px 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 70px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    background: #bbbbbb00;
+    box-shadow: 0 0px 0px 0 rgba(27, 27, 27, 0.37);
+    background-image: linear-gradient(45deg, transparent 50%, #000000 50%);
+    background-position: 25%;
+    color: #d3d3d3;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 100px;
+    background-size: 400%;
+    -webkit-transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    z-index: 55;
+}
+
+.btnlogout a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family:  'Helvetica', serif;
+    color: inherit; /* Inherit text color from parent */
+    white-space: nowrap; 
+}
+
+.btnlogout:hover {
+    color: #ffffff;
+    background-position: 100%;
+}
+
+.btnupdate {
+    margin-left: 480px;
+}
+
+/* style for score */
+
+
+.profile-score {
+    padding: 10px;
+    margin-bottom: 140px;
+    margin-top: 160px;
+    margin-right: 70px;
+    width: auto;
+    height: 180px;
+    font-family: 'inter', serif;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(27, 27, 27, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.profile-score h4 {
+    font-family: 'Helvetica', serif;
+    font-size: 20px;
+    justify-content: center;
+    color: rgb(182, 182, 182);
+    margin-left: 44%;
+}
+
+.profile-score ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-left: -5%;
+}
+
+.profile-score ul li {
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    align-items: center;
+    color: #b8b8b8;
+    font-size: 20px;
+}
+
+.profile-score ul li p {
+    margin: 0;
+    font-size: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: #b8b8b8;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( 5px );
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+.modal-content {
+    background-color: rgb(170, 170, 170);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    mix-blend-mode: normal;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.clickable {
+    cursor: pointer;
+    color: #007bff; /* Example color */
+    /* Any additional styling to indicate clickability */
+}
+
+.user-quizzes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust based on your design preference */
+    gap: 20px; /* Space between each quiz container */
+}
+
+.quiz-container {
+    width: calc(50% - 10px); /* Example for three quizzes per row, adjust the percentage as needed */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 4px;
+    margin-left: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: hidden; /* Ensures the background image does not overflow the border-radius */
+}
+
+    
+
+.user-quizzes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start; /* Adjust this to center if you want the quizzes to be centered when there are few */
+    gap: 20px; /* This replaces the margin-left and ensures even spacing around items */
+}
+
+.quiz-container {
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: calc(30% - 20px); /* Ensures that it takes up at least 30% of the container width, minus some margin, but can grow if there's space */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    overflow: hidden;
+}
+
+.userboxed-link {
+    padding: 20px;
+    background-size: cover; /* This ensures that your background image covers the area, adjust as necessary */
+    background-position: center;
+    width: 100%; /* This makes sure the link uses the full width of its parent */
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* This centers the text/link inside the .userboxed-link */
+    transition: transform 0.3s ease;
+}
+
+/* Add a hover effect to .userboxed-link for a zoom effect */
+.userboxed-link:hover {
+    transform: scale(1.05); /* Slightly enlarges the link area */
+}
+
+.userboxed-link a {
+    color: #F4AC45;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.delete-quiz-btn {
+    width: 100%; /* Makes the button span the entire width of its container */
+    padding: 5px 15px; /* Adds some padding for better touch target size */
+    border: none;
+    border-radius: 5px;
+    background-color: #640000; /* Adjust based on your theme */
+    color: rgb(145, 0, 0);
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, #ffe9ab 50%);
+    background-position: 25%;
+    background-size: 400%;
+    transition: transform 0.3s ease;
+    -webkit-transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    transition: background 500ms ease-in-out, color 500ms ease-in-out;
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+}
+
+.delete-quiz-btn:hover {
+    background-position: 100%;
+    background-color: #ffffe1; /* Change background color on hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    animation: none;
+    transform: scale(1.05);
+    color: #000000; /* Lighter shade for hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 10px;
+    }
+
+    .profile-details, .profile-score {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-details img {
+        max-width: 100px;
+    }
+
+    .user-quizzes, .quiz-container {
+        width: 100%;
+    }
+
+    .profile-actions ul li a img {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .profile-page, .user-quizzes, .quiz-container {
+        width: calc(100% - 20px);
+    }
+
+    .profile-details img {
+        max-width: 80px;
+    }
+}
+
+/* Modal Styles */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+}
+
+/* Enhancements for buttons and links */
+.btnlogout, .delete-quiz-btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnlogout:hover, .delete-quiz-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Additional responsive adjustments */
+@media (max-width: 768px) {
+    .btnupdate, .profile-actions li a img {
+        margin-top: 10px; /* Adjust spacing for smaller screens */
+        width: auto; /* Adjust width for icons and buttons */
+    }
+}

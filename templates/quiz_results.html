@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="quiz-results-container">
+    <h1>Quiz Results</h1>
+    <div class="score-animation" id="animatedScore">Your Score: 0</div>
+    <div style=display:none  class="total-score">Total Score: <span id="totalScore">{{ total_score }}</span></div>
+
+    <div class="details">
+        <h2>Details:</h2>
+        <ul id="detailsList">
+            {% for detail in details %}
+            <li class="detail-item">
+                <strong>Question:</strong> {{ detail.question_text }}<br>
+                <strong>Your Answer:</strong> {{ detail.selected_option_text }}<br>
+                <strong>Correct:</strong> {{ 'Yes' if detail.is_correct else 'No' }}<br>
+                <strong>Points Awarded:</strong> {{ detail.score_awarded }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="backhome"> <a href="{{ url_for('quiz') }}">Back to Quiz</a></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+      // Correctly animate score from 0 to totalScore
+      let totalScore = parseInt($('#totalScore').text(), 10); // Ensure this captures the actual total score
+      $({ Counter: 0 }).animate({
+          Counter: totalScore
+      }, {
+          duration: 1500, // Adjusted for a smoother transition
+          easing: 'swing',
+          step: function() {
+              $('#animatedScore').text('Your Score: ' + Math.ceil(this.Counter));
+          }
+      });
+  
+      // Animate the appearance of each detail item for a nicer effect
+      $('.detail-item').each(function(i) {
+          $(this).delay(100 * i).fadeIn(600);
+      });
+  });
+  </script>
+{% endblock %}
